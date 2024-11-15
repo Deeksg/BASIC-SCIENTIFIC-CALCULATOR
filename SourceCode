@@ -1,0 +1,168 @@
+#include<iostream>
+#include<cmath>
+#include<windows.h>
+
+using namespace std;
+
+void show_calculator(){
+	//creating a basic framework for calculator
+	cout<<"-------------------------------------------------"<<endl;
+	cout<<"|----                                       ----|"<<endl;
+	cout<<"|-                 SCIENTIFIC                  -|"<<endl;
+	cout<<"|-                 CALCULATOR                  -|"<<endl;
+	cout<<"|----                                       ----|"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      +       |       -       |       *      -|"<<endl;
+	cout<<"|-     Add      |      Sub      |   Multiply   -|"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-       /      |       m       |       L       |"<<endl;
+	cout<<"|-    Divide    |      mod      |      Log      |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      S       |       C       |       P       |"<<endl;
+	cout<<"|-    Square    |      Cube     |     Power     |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      s       |       c       |       t       |"<<endl;
+	cout<<"|-     sin      |      cos      |      tan      |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      r       |       k       |       .       |"<<endl;
+	cout<<"|-   sqr root   |     clear     |     close     |"<<endl;
+	cout<<"-------------------------------------------------"<<endl;
+	
+};
+void display_output(int answer){
+	//calculator framework with current output
+	cout<<"-------------------------------------------------"<<endl;
+	cout<<"|----                                       ----|"<<endl;
+	cout<<"|-                 SCIENTIFIC                  -|"<<endl;
+	cout<<"|-                 CALCULATOR                  -|"<<endl;
+	cout<<"|----                                       ----|"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|----                       --------------------|"<<endl;
+	cout<<"|-     CURRENT OUTPUT       |            "<<endl;
+	cout<<"|-            IS:           |    "<<answer<<endl;
+	cout<<"|----                       --------------------|"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      +       |       -       |       *      -|"<<endl;
+	cout<<"|-     Add      |      Sub      |   Multiply   -|"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-       /      |       m       |       L       |"<<endl;
+	cout<<"|-    Divide    |      mod      |      Log      |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      S       |       C       |       P       |"<<endl;
+	cout<<"|-    Square    |      Cube     |     Power     |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      s       |       c       |       t       |"<<endl;
+	cout<<"|-     sin      |      cos      |      tan      |"<<endl;
+	cout<<"|-----------------------------------------------|"<<endl;
+	cout<<"|-      r       |       k       |       .       |"<<endl;
+	cout<<"|-   sqr root   |     clear     |     close     |"<<endl;
+	cout<<"-------------------------------------------------"<<endl;
+	
+};
+	
+	int main(){
+		//define two numbers to take input later on
+		double num1=0.0;
+		double num2=0.0;
+
+		double answer=0.0;
+		char inp='\n';
+		bool converter =0;
+
+		//show_calculator();//calling the function to show calculator
+		while(inp !='.'){
+			if (converter == 1)// if we want to display output 
+			{//take one input
+			display_output(answer);
+			cout<<"Enter the operation:"<<endl;//take input for the operation user want to perform
+			cin>>inp;
+			if(inp =='+' || inp =='-' || inp == '*' || inp == '/' || inp == 'm' || inp == 'P'){
+				num1=answer;
+				cout<<"Enter number 2:"<<endl;
+				cin>>num2;
+			}
+			else if(inp=='k'|| inp=='.'){
+				//just don't take any input
+			}
+			else{
+				num1=answer;
+			}
+
+			}
+			else// if we want to show calculator
+			{//take two inputs 
+			show_calculator();
+			cout<<"Enter the operation:"<<endl;//take input for the operation user want to perform
+			cin>>inp;
+			if(inp =='+' || inp =='-' || inp == '*' || inp == '/' || inp == 'm' || inp == 'P'){
+				cout<<"Enter number 1:"<<endl;
+				cin>>num1;
+				cout<<"Enter number 2:"<<endl;
+				cin>>num2;
+			}
+			else if(inp=='k'|| inp=='.'){
+				//just don't take any input
+			}
+			else{
+				cout<<"Enter the number:"<<endl;
+				cin>>num1;
+				
+			}
+			converter=1;
+
+		}
+			switch(inp){
+				case '+':
+					answer = num1 + num2;
+					break;
+				case '-':
+					answer = num1 - num2;
+					break;
+				case '*':
+					answer = num1 * num2;
+					break;
+				case '/':
+					answer = num1 / num2;
+					break;
+				case 'm':
+					answer = int(num1) % int(num2);
+					break;
+				case 'L':
+					answer = log(num1);
+					break;
+				case 'S':
+					answer = num1*num1;
+					break;
+				case 'C':
+					answer = num1*num1*num1;
+					break;
+				case 'P':
+					answer = pow(num1,num2);
+					break;
+				case 's':
+					answer = sin(num1);
+					break;
+				case 'c':
+					answer = cos(num1);
+					break;
+				case 't':
+					answer = tan(num1);
+					break;
+				case 'r':
+					answer = sqrt(num1);
+					break;
+				case '.':
+					break;
+				case 'k':
+					converter= 0;
+					break;
+				default:
+					cout<<"~~~~~~~Invalid Key!~~~~~~~"<<endl;
+					
+			
+			}
+			system("cls");
+		}
+
+		return 0;
+	}
